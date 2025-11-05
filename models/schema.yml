@@ -49,3 +49,127 @@ sources:
             description: cost of logistics
           - name: ship_cost
             description: total cost of shipping
+
+models:
+  - name: int_sales_margin
+    description:
+    columns:
+      - name: orders_id
+        description:
+        tests:
+          - not_null
+      - name: date_date
+        description:
+        tests:
+          - not_null
+      - name: products_id
+        description:
+        tests:
+          - not_null
+      - name: quantity
+        description:
+        tests:
+          - not_null
+          - positive_value
+      - name: revenue
+        description:
+        tests:
+          - not_null
+      - name: purchase_price
+        description:
+        tests:
+          - not_null
+      - name: purchase_cost
+        description:
+        tests:
+          - not_null
+      - name: margin
+        description:
+
+  - name: int_orders_margin
+    description:
+    columns:
+      - name: orders_id
+        description:
+        tests:
+          - not_null
+          - unique
+      - name: date_date
+        description:
+        tests:
+          - not_null
+      - name: quantity
+        description:
+        tests:
+          - not_null
+          - positive_value
+      - name: revenue
+        description:
+        tests:
+          - not_null
+      - name: purchase_cost
+        description:
+        tests:
+          - not_null
+      - name: margin
+        description:
+
+  - name: int_orders_operational
+    description: "operational margin of orders"
+    columns:
+      - name: orders_id
+        description:
+        tests:
+          - not_null
+          - unique
+      - name: date_date
+        description:
+        tests:
+          - not_null
+      - name: operational_margin
+        description:
+        tests:
+          - not_null
+
+  - name: finance_days
+    description: "total aggregation"
+    columns:
+      - name: date_date
+        description:
+        tests:
+          - not_null
+          - unique
+      - name: total_transactions
+        description:
+        tests:
+          - not_null
+          - positive_value
+      - name: total_revenue
+        description:
+        tests:
+          - not_null
+      - name: average_basket
+        description:
+        tests:
+          - not_null
+      - name: total_operational_margin
+        description:
+        tests:
+          - not_null
+      - name: total_purchase_cost
+        description:
+        tests:
+          - not_null
+      - name: total_shipping_fees
+        description:
+        tests:
+          - not_null
+      - name: total_log_costs
+        description:
+        tests:
+          - not_null
+      - name: total_quantity
+        description:
+        tests:
+          - not_null
+          - positive_value

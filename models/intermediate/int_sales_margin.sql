@@ -11,6 +11,7 @@ products as (
 joined as (
     select
         sales.orders_id,
+        sales.date_date,
         sales.products_id,
         sales.quantity,
         sales.revenue,

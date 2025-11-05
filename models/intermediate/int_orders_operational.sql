@@ -12,7 +12,6 @@ joined as (
     select
         orders_margin.orders_id,
         orders_margin.date_date,
-        -- Calcolo operational margin
         orders_margin.margin 
             + ship.shipping_fee 
             - ship.logcost 

@@ -50,6 +50,54 @@ sources:
           - name: ship_cost
             description: total cost of shipping
 
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: data from adwords
+        columns:
+          - name: date_date
+            description: unique id for each order
+          - name: paid_source
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: data from bing
+        columns:
+          - name: date_date
+            description: unique id for each order
+          - name: paid_source
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: data from criteo
+        columns:
+          - name: date_date
+            description: unique id for each order
+          - name: paid_source
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: data from facebook
+        columns:
+          - name: date_date
+            description: unique id for each order
+          - name: paid_source
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
 models:
   - name: int_sales_margin
     description: int model for sales margin
@@ -169,3 +217,59 @@ models:
         description: sum of all quantities
         tests:
           - not_null
+
+  - name: int_campaigns
+    description: Combined advertising campaigns data from all platforms (AdWords, Bing, Criteo, Facebook) for unified analysis
+    columns:
+      - name: date_date
+        description: Date when the campaign metrics were recorded
+        tests:
+          - not_null
+      - name: paid_source
+        description: Source of the paid traffic
+        tests:
+          - not_null
+      - name: campaign_key
+        description: Unique identifier for the campaign
+        tests:
+          - not_null
+      - name: campaign_name
+        description: Name of the advertising campaign
+        tests:
+          - not_null
+      - name: ads_cost
+        description: Total cost of the advertising campaign
+        tests:
+          - not_null
+      - name: impression
+        description: Number of ad impressions served
+        tests:
+          - not_null
+      - name: click
+        description: Number of ad clicks received
+        tests:
+          - not_null
+
+  - name: int_campaigns_day
+    description: Daily aggregated advertising campaign metrics across all platforms with performance KPIs
+    columns:
+      - name: date_date
+        description: Date of the aggregated metrics
+      - name: total_ads_cost
+        description: Total advertising cost across all platforms
+      - name: total_impressions
+        description: Total number of ad impressions across all platforms
+      - name: total_clicks
+        description: Total number of ad clicks across all platforms
+      - name: cpc
+        description: Cost Per Click
+      - name: cpm
+        description: Cost Per Thousand Impressions
+      - name: ctr
+        description: Click-Through Rate
+      - name: unique_campaigns
+        description: Number of distinct campaigns running
+      - name: unique_sources
+        description: Number of distinct paid traffic sources
+      - name: unique_platforms
+        description: Number of distinct advertising platforms

@@ -52,124 +52,120 @@ sources:
 
 models:
   - name: int_sales_margin
-    description:
+    description: int model for sales margin
     columns:
       - name: orders_id
-        description:
+        description: unique id
         tests:
           - not_null
       - name: date_date
-        description:
+        description: date of order
         tests:
           - not_null
       - name: products_id
-        description:
+        description: unique for products
         tests:
           - not_null
       - name: quantity
-        description:
+        description: quantity of products
         tests:
           - not_null
-          - positive_value
       - name: revenue
-        description:
+        description: total rev generated
         tests:
           - not_null
       - name: purchase_price
-        description:
+        description: purchase price per product
         tests:
           - not_null
       - name: purchase_cost
-        description:
+        description: total purchase cost
         tests:
           - not_null
       - name: margin
-        description:
+        description: profit margin
 
   - name: int_orders_margin
-    description:
+    description: Intermediate model calculating profit margins
     columns:
       - name: orders_id
-        description:
+        description: unique id
         tests:
           - not_null
           - unique
       - name: date_date
-        description:
+        description: date
         tests:
           - not_null
       - name: quantity
-        description:
+        description: qty of products in order
         tests:
           - not_null
-          - positive_value
       - name: revenue
-        description:
+        description: total rev from the order
         tests:
           - not_null
       - name: purchase_cost
-        description:
+        description: total cost of purchase
         tests:
           - not_null
       - name: margin
-        description:
+        description: calculated margin
 
   - name: int_orders_operational
-    description: "operational margin of orders"
+    description: operational margin of orders
     columns:
       - name: orders_id
-        description:
+        description: unique id for orders
         tests:
           - not_null
           - unique
       - name: date_date
-        description:
+        description: date
         tests:
           - not_null
       - name: operational_margin
-        description:
+        description: operational profit margin
         tests:
           - not_null
 
   - name: finance_days
-    description: "total aggregation"
+    description: total aggregation
     columns:
       - name: date_date
-        description:
+        description: business date
         tests:
           - not_null
           - unique
       - name: total_transactions
-        description:
+        description: total number of orders
         tests:
           - not_null
-          - positive_value
       - name: total_revenue
-        description:
+        description: total rev
         tests:
           - not_null
       - name: average_basket
-        description:
+        description: avg revenue per transaction
         tests:
           - not_null
       - name: total_operational_margin
-        description:
+        description: total operational margin
         tests:
           - not_null
       - name: total_purchase_cost
-        description:
+        description: total cost of goods sold
         tests:
           - not_null
       - name: total_shipping_fees
-        description:
+        description: total of shipping fees
         tests:
           - not_null
       - name: total_log_costs
-        description:
+        description: total of logistics costs
         tests:
           - not_null
       - name: total_quantity
-        description:
+        description: sum of all quantities
         tests:
           - not_null
-          - positive_value

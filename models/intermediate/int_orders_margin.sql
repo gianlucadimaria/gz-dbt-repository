@@ -1,7 +1,7 @@
 with 
 
 sales_margin as (
-    select * from {{ ref('int_sales_margin') }}
+    select * from {{ ref('stg_raw__sales') }}
 ),
 
 picked_by_order as (
